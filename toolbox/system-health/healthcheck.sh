@@ -24,20 +24,14 @@ set -euo pipefail
 
 # -----------------------------------------------------
 # Configurable thresholds
-
 # -----------------------------------------------------
 
 CPU_WARNING=70
 CPU_CRITICAL=90
 DISK_WARNING=85
 
-
-
 # -----------------------------------------------------
 # Function: check_cpu
-#
-# mac does not peovide simple cpu percentaghe cmd
-# run top ro get cpu usage snapshot
 # -----------------------------------------------------
 
 check_cpu() {
@@ -59,11 +53,8 @@ check_cpu() {
     fi
 }
 
-
 # -----------------------------------------------------
 # Function: check_memory
-#
-# estimate memory pressure by using free vs active pages
 # -----------------------------------------------------
 
 check_memory() {
@@ -84,9 +75,6 @@ check_memory() {
 
 # -----------------------------------------------------
 # Function: check_disk
-#
-# focus on root extraction (/)
-# awk extarcts col 5 -> percentage used
 # -----------------------------------------------------
 
 check_disk() {
@@ -101,13 +89,8 @@ check_disk() {
 
 }
 
-
 # -----------------------------------------------------
 # Fucntion: check_load
-#
-# uptime prints system load averages
-# 1,5,15 min
-#
 # -----------------------------------------------------
 
 check_load() {
@@ -117,13 +100,8 @@ check_load() {
     echo "System Load (1m,5m,15m): $load"
 }
 
-
 # -----------------------------------------------------
 # Function: check_services
-#
-# check if critical servicesare running
-#  pgrep returns PID if running
-#
 # -----------------------------------------------------
 
 check_services() {
@@ -143,7 +121,6 @@ check_services() {
     done
                 
 }
-
 
 # -----------------------------------------------------
 # Main Execution
